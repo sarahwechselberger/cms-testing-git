@@ -6,21 +6,17 @@ export default defineStackbitConfig({
 
     ssgName: 'eleventy',
 
-    // Eleventy dev server used by Netlify Visual Editor
     devCommand: 'npx @11ty/eleventy --serve --port {PORT}',
 
-    // Eleventy-specific Visual Editor configuration
     experimental: {
         ssg: {
             proxyWebsockets: true,
-
             logPatterns: {
                 up: ['Server at'],
             },
         },
     },
 
-    // Let Eleventy handle content reloads
     customContentReload: true,
 
     contentSources: [
@@ -35,7 +31,6 @@ export default defineStackbitConfig({
                     type: 'page',
 
                     filePath: 'content/pages/{slug}.md',
-                    urlPath: '/{slug}/',
 
                     fields: [
                         {
@@ -48,6 +43,10 @@ export default defineStackbitConfig({
                             type: 'slug',
                         },
                         {
+                            name: 'permalink',
+                            type: 'string',
+                        },
+                        {
                             name: 'markdown_content',
                             type: 'markdown',
                         },
@@ -56,4 +55,26 @@ export default defineStackbitConfig({
             ],
         }),
     ],
+
+    siteMap: ({ documents, models }) => {
+        const pageModels = models
+            .filter((model) => model.type === 'page')
+            .map((model) => model.name);
+
+        return documents
+            .filter((document) => pageModels.includes(document.modelName))
+            .map((document) => {
+                const permalink = document.fields.permalink;
+
+                if (!permalink || permalink.type !== 'string') {
+                    return null;
+                }
+
+                return {
+                    urlPath: permalink.value,
+                    document,
+                };
+            })
+            .filter(Boolean),
+    },
 });
