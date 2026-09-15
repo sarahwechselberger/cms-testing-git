@@ -22,13 +22,5 @@ export default defineStackbitConfig({
                 }
             ]
         })
-    ],
-    siteMap: ({ documents }) => {
-        return documents.map((document) => ({
-            stableId: document.id,
-            urlPath: `/${document.fields.slug ?? document.id}`,
-            document,
-            isHomePage: false
-        }));
-    }
+    ]
 });
