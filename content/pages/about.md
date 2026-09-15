@@ -1,6 +1,6 @@
 ---
+type: page
 title: About
-layout: page
 permalink: /about/
 ---
 
