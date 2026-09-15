@@ -17,6 +17,7 @@ export default defineStackbitConfig({
                     filePath: 'content/pages/{slug}.md',
                     fields: [
                         { name: 'title', type: 'string', required: true },
+                        { name: 'permalink', type: 'string', required: true },
                         { name: 'body', type: 'markdown' }
                     ]
                 }
