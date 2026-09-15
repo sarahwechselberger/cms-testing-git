@@ -6,11 +6,14 @@ export default defineStackbitConfig({
 
     ssgName: 'eleventy',
 
+    nodeVersion: '18',
+
     devCommand: 'npx @11ty/eleventy --serve --port {PORT}',
 
     experimental: {
         ssg: {
             proxyWebsockets: true,
+
             logPatterns: {
                 up: ['Server at'],
             },
@@ -66,7 +69,11 @@ export default defineStackbitConfig({
             .map((document) => {
                 const permalink = document.fields.permalink;
 
-                if (!permalink || permalink.type !== 'string') {
+                if (
+                    !permalink ||
+                    permalink.type !== 'string' ||
+                    !permalink.value
+                ) {
                     return null;
                 }
 
@@ -75,6 +82,6 @@ export default defineStackbitConfig({
                     document,
                 };
             })
-            .filter(Boolean),
+            .filter(Boolean);
     },
 });
