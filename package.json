@@ -1,0 +1,20 @@
+{
+  "name": "handbuch-git-cms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx @11ty/eleventy --serve",
+    "build": "npx @11ty/eleventy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.6",
+    "@stackbit/cms-git": "^1.0.38",
+    "@stackbit/types": "^2.1.15"
+  }
+}
