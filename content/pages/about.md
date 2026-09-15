@@ -1,6 +1,7 @@
 ---
 type: page
 title: About
+slug: about
 permalink: /about/
 ---
 

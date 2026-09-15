@@ -13,12 +13,23 @@ export default defineStackbitConfig({
                 {
                     name: 'page',
                     type: 'page',
-                    urlPath: '/{slug}',
                     filePath: 'content/pages/{slug}.md',
+                    urlPath: '/{slug}',
                     fields: [
-                        { name: 'title', type: 'string', required: true },
-                        { name: 'permalink', type: 'string', required: true },
-                        { name: 'body', type: 'markdown' }
+                        {
+                            name: 'slug',
+                            type: 'string',
+                            required: true
+                        },
+                        {
+                            name: 'title',
+                            type: 'string',
+                            required: true
+                        },
+                        {
+                            name: 'body',
+                            type: 'markdown'
+                        }
                     ]
                 }
             ]

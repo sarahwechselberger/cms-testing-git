@@ -1,6 +1,7 @@
 ---
 type: page
 title: Home
+slug: home
 permalink: /
 ---
 
