@@ -21,18 +21,21 @@ export default defineStackbitConfig({
                             type: 'string',
                             required: true
                         },
+                        { name: 'permalink', type: 'string', required: true },
                         {
                             name: 'title',
                             type: 'string',
                             required: true
                         },
                         {
-                            name: 'body',
+                            name: 'content',
                             type: 'markdown'
                         }
+
                     ]
                 }
             ]
         })
     ]
+
 });
