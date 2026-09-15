@@ -6,14 +6,11 @@ export default defineStackbitConfig({
 
     ssgName: 'eleventy',
 
-    nodeVersion: '18',
-
     devCommand: 'npx @11ty/eleventy --serve --port {PORT}',
 
     experimental: {
         ssg: {
             proxyWebsockets: true,
-
             logPatterns: {
                 up: ['Server at'],
             },
@@ -32,8 +29,8 @@ export default defineStackbitConfig({
                 {
                     name: 'page',
                     type: 'page',
-
                     filePath: 'content/pages/{slug}.md',
+                    urlPath: '/{slug}',
 
                     fields: [
                         {
@@ -45,43 +42,9 @@ export default defineStackbitConfig({
                             name: 'slug',
                             type: 'slug',
                         },
-                        {
-                            name: 'permalink',
-                            type: 'string',
-                        },
-                        {
-                            name: 'markdown_content',
-                            type: 'markdown',
-                        },
                     ],
                 },
             ],
         }),
     ],
-
-    siteMap: ({ documents, models }) => {
-        const pageModels = models
-            .filter((model) => model.type === 'page')
-            .map((model) => model.name);
-
-        return documents
-            .filter((document) => pageModels.includes(document.modelName))
-            .map((document) => {
-                const permalink = document.fields.permalink;
-
-                if (
-                    !permalink ||
-                    permalink.type !== 'string' ||
-                    !permalink.value
-                ) {
-                    return null;
-                }
-
-                return {
-                    urlPath: permalink.value,
-                    document,
-                };
-            })
-            .filter(Boolean);
-    },
 });
