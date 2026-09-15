@@ -14,7 +14,7 @@ export default defineStackbitConfig({
                     name: 'page',
                     type: 'page',
                     filePath: 'content/pages/{slug}.md',
-                    urlPath: '/{slug}',
+                    urlPath: '/{slug}/',
                     "fields": [
                         { name: "title", type: "string", required: true },
                         { name: "slug", type: "slug" },
