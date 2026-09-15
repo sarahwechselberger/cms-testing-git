@@ -7,20 +7,20 @@ export default defineStackbitConfig({
 
     contentSources: [
         new GitContentSource({
-            rootPath: __dirname
-        })
-    ],
-
-    models: [
-        {
-            name: 'page',
-            type: 'page',
-            urlPath: '/{slug}',
-            filePath: 'content/pages/{slug}.md',
-            fields: [
-                { name: 'title', type: 'string', required: true },
-                { name: 'body', type: 'markdown' }
+            rootPath: __dirname,
+            contentDirs: ["content"],
+            models: [
+                {
+                    name: 'page',
+                    type: 'page',
+                    urlPath: '/{slug}',
+                    filePath: 'content/pages/{slug}.md',
+                    fields: [
+                        { name: 'title', type: 'string', required: true },
+                        { name: 'body', type: 'markdown' }
+                    ]
+                }
             ]
-        }
+        })
     ]
 });
