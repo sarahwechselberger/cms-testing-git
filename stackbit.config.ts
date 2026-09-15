@@ -27,11 +27,6 @@ export default defineStackbitConfig({
                             type: 'string',
                             required: true
                         },
-                        {
-                            name: 'content',
-                            type: 'markdown'
-                        }
-
                     ]
                 }
             ]
